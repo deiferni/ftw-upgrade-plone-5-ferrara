@@ -1,16 +1,36 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="ftwupgrade.demo">
 
   <includeDependencies package="." />
+  <include package="ftw.upgrade" file="meta.zcml" />
 
   <genericsetup:registerProfile
       name="default"
       title="ftwupgrade.demo"
       directory="profiles/default"
       description="Installs the ftwupgrade.demo add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:upgradeStep
+      title="ftwupgrade.demo 1001"
+      description="Upgrade ftwupgrade.demo to 1001."
+      source="1000"
+      destination="1001"
+      handler="ftwupgrade.demo.upgrades.to1001.upgrade_site_to_1001"
+      profile="ftwupgrade.demo:default"
+      />
+
+  <genericsetup:registerProfile
+      name="1001"
+      title="ftwupgrade.demo 1001"
+      description="Upgrade ftwupgrade.demo to 1001."
+      directory="upgrades/profiles/1001"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
