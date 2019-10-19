@@ -31,6 +31,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'ftw.upgrade',
+        'ftw.inflator>=1.11.0',
         'Products.GenericSetup>=1.8.2',
         'setuptools',
     ],

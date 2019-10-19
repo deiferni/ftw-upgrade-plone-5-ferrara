@@ -2,11 +2,13 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:inflator="http://namespaces.zope.org/inflator"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="ftwupgrade.demo">
 
   <includeDependencies package="." />
   <include package="ftw.upgrade" file="meta.zcml" />
+  <include package="ftw.inflator" file="meta.zcml" />
 
   <genericsetup:registerProfile
       name="default"
@@ -19,6 +21,12 @@
   <upgrade-step:directory
       profile="ftwupgrade.demo:default"
       directory="./upgrades"
+      />
+
+  <inflator:bundle
+      title="ftwupgrade demo 'Plone'"
+      profiles="ftw.inflator:setup-language
+                ftwupgrade.demo:default"
       />
 
 </configure>
