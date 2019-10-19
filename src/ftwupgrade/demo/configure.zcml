@@ -3,6 +3,7 @@
     xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:inflator="http://namespaces.zope.org/inflator"
+    xmlns:profilehook="http://namespaces.zope.org/profilehook"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="ftwupgrade.demo">
 
@@ -24,9 +25,14 @@
       />
 
   <inflator:bundle
-      title="ftwupgrade demo 'Plone'"
+      title="ftwupgrade demo 'ExampleContent'"
       profiles="ftw.inflator:setup-language
                 ftwupgrade.demo:default"
+      />
+
+  <profilehook:hook
+      profile="ftwupgrade.demo:default"
+      handler=".hooks.default_profile_installed"
       />
 
 </configure>

@@ -32,6 +32,7 @@ setup(
     install_requires=[
         'ftw.upgrade',
         'ftw.inflator>=1.11.0',
+        'ftw.profilehook>=1.3.0',
         'Products.GenericSetup>=1.8.2',
         'setuptools',
     ],
