@@ -1,0 +1,7 @@
+<registry>
+  <record
+      interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings"
+      field="max_items">
+    <value >20</value>
+  </record>
+</registry>
